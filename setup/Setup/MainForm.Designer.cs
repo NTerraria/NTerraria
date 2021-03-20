@@ -103,8 +103,8 @@ namespace Terraria.ModLoader.Setup
 			this.buttonSetup.Size = new System.Drawing.Size(150, 27);
 			this.buttonSetup.TabIndex = 0;
 			this.buttonSetup.Text = "Setup";
-			this.toolTipButtons.SetToolTip(this.buttonSetup, "Complete environment setup for working on tModLoader source\r\nEquivalent to Decomp" +
-        "ile+Patch+SetupDebug\r\nEdit the source in src/tModLoader then run Diff tModLoader" +
+			this.toolTipButtons.SetToolTip(this.buttonSetup, "Complete environment setup for working on NTerraria source\r\nEquivalent to Decomp" +
+		"ile+Patch+SetupDebug\r\nEdit the source in src/NTerraria then run Diff NTerraria" +
         " and commit the /patches folder");
 			this.buttonSetup.UseVisualStyleBackColor = true;
 			this.buttonSetup.Click += new System.EventHandler(this.buttonTask_Click);
@@ -163,8 +163,8 @@ namespace Terraria.ModLoader.Setup
 			this.buttonPatchModLoader.Name = "buttonPatchModLoader";
 			this.buttonPatchModLoader.Size = new System.Drawing.Size(150, 27);
 			this.buttonPatchModLoader.TabIndex = 3;
-			this.buttonPatchModLoader.Text = "Patch tModLoader";
-			this.toolTipButtons.SetToolTip(this.buttonPatchModLoader, "Applies tModLoader patches to Terraria\r\nEdit the source code in src/tModLoader af" +
+			this.buttonPatchModLoader.Text = "Patch NTerraria";
+			this.toolTipButtons.SetToolTip(this.buttonPatchModLoader, "Applies NTerraria patches to Terraria\r\nEdit the source code in src/NTerraria af" +
         "ter this phase\r\nInternally formats the Terraria sources before patching");
 			this.buttonPatchModLoader.UseVisualStyleBackColor = true;
 			this.buttonPatchModLoader.Click += new System.EventHandler(this.buttonTask_Click);
@@ -178,7 +178,7 @@ namespace Terraria.ModLoader.Setup
 			this.buttonDiffModLoader.Name = "buttonDiffModLoader";
 			this.buttonDiffModLoader.Size = new System.Drawing.Size(150, 27);
 			this.buttonDiffModLoader.TabIndex = 5;
-			this.buttonDiffModLoader.Text = "Diff tModLoader";
+			this.buttonDiffModLoader.Text = "Diff NTerraria";
 			this.toolTipButtons.SetToolTip(this.buttonDiffModLoader, resources.GetString("buttonDiffModLoader.ToolTip"));
 			this.buttonDiffModLoader.UseVisualStyleBackColor = true;
 			this.buttonDiffModLoader.Click += new System.EventHandler(this.buttonTask_Click);
@@ -363,7 +363,7 @@ namespace Terraria.ModLoader.Setup
 			this.MainMenuStrip = this.mainMenuStrip;
 			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.Name = "MainForm";
-			this.Text = "tModLoader Dev Setup";
+			this.Text = "NTerraria Dev Setup";
 			this.mainMenuStrip.ResumeLayout(false);
 			this.mainMenuStrip.PerformLayout();
 			this.ResumeLayout(false);

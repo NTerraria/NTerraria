@@ -30,7 +30,7 @@ namespace Terraria.ModLoader.Setup
 		public void DoAuto() {
 			Func<SetupOperation> buttonDecompile = () => new DecompileTask(this, "src/decompiled");
 			Func<SetupOperation> buttonPatchTerraria = () => new PatchTask(this, "src/decompiled", "src/Terraria", "patches/Terraria", new ProgramSetting<DateTime>("TerrariaDiffCutoff"));
-			Func<SetupOperation> buttonPatchModLoader = () => new PatchTask(this, "src/Terraria", "src/tModLoader", "patches/tModLoader", new ProgramSetting<DateTime>("tModLoaderDiffCutoff"));
+			Func<SetupOperation> buttonPatchModLoader = () => new PatchTask(this, "src/Terraria", "src/NTerraria", "patches/NTerraria", new ProgramSetting<DateTime>("tModLoaderDiffCutoff"));
 			Func<SetupOperation> buttonSetupDebugging = () => new SetupDebugTask(this);
 
 			Func<SetupOperation> buttonRegenSource = () =>

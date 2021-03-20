@@ -1,8 +1,0 @@
-zh-Hans 51
-ru-RU 68
-pt-BR 314
-pl-PL 225
-it-IT 363
-fr-FR 76
-es-ES 3
-de-DE 82
