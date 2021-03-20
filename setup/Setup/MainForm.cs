@@ -29,7 +29,7 @@ namespace Terraria.ModLoader.Setup
 			taskButtons[buttonSetupDebugging] = () => new SetupDebugTask(this);
 
 			taskButtons[buttonRegenSource] = () =>
-				new RegenSourceTask(this, new[] { buttonPatchTerraria, buttonPatchModLoader, buttonSetupDebugging }
+				new RegenSourceTask(this, new[] { buttonPatchTerraria, buttonPatchModLoader } //, buttonSetupDebugging }
 					.Select(b => taskButtons[b]()).ToArray());
 
 			taskButtons[buttonSetup] = () =>
@@ -102,7 +102,7 @@ namespace Terraria.ModLoader.Setup
 		}
 
 		private void menuItemHookGen_Click(object sender, EventArgs e) {
-			RunTask(new HookGenTask(this));
+			//RunTask(new HookGenTask(this));
 		}
 
 		private void simplifierToolStripMenuItem_Click(object sender, EventArgs e) {
