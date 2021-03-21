@@ -1,0 +1,28 @@
+--- src/Terraria/Terraria/Main.cs
++++ src/NTerraria/Terraria/Main.cs
+@@ -66,6 +_,8 @@
+ using Terraria.Localization;
+ using Terraria.Map;
+ using Terraria.Net;
++using Terraria.NTerraria.API;
++using Terraria.NTerraria.Core;
+ using Terraria.ObjectData;
+ using Terraria.Social;
+ using Terraria.UI;
+@@ -4986,6 +_,7 @@
+ 			Netplay.Initialize();
+ 			NetworkInitializer.Load();
+ 			ChatInitializer.Load();
++			Loader.LoadMods();
+ 			if (menuMode == 1)
+ 				LoadPlayers();
+ 
+@@ -12343,7 +_,7 @@
+ 				netMode = _targetNetMode;
+ 				_hasPendingNetmodeChange = false;
+ 			}
+-
++			NTCore.Update();
+ 			if (CaptureManager.Instance.IsCapturing)
+ 				return;
+ 

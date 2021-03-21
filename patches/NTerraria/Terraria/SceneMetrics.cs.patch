@@ -1,0 +1,11 @@
+--- src/Terraria/Terraria/SceneMetrics.cs
++++ src/NTerraria/Terraria/SceneMetrics.cs
+@@ -95,7 +_,7 @@
+ 
+ 		public int BloodTileCount {
+ 			get;
+-			private set;
++			internal set;
+ 		}
+ 
+ 		public int JungleTileCount {

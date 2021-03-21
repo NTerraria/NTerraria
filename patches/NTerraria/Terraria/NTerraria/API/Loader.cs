@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Terraria.NTerraria.API.Abstraction;
+using Terraria.NTerraria.Core.Default;
 
 namespace Terraria.NTerraria.API
 {
@@ -22,8 +22,12 @@ namespace Terraria.NTerraria.API
 
         internal static void LoadMods()
         {
+            Directory.CreateDirectory(ModsPath);
             List<string> modPaths = GetMods().ToList();
-            List<Mod> registeredMods = new List<Mod>();
+            mods = new List<Mod>
+            {
+                new DefaultMod()
+            };
 
             foreach (string modPath in modPaths)
             {
@@ -45,15 +49,20 @@ namespace Terraria.NTerraria.API
                         mod.Assembly = modAssembly;
                         mod.Autoload(ref name); // Don't bother checking for its return value. It will *always* return true. :)
                         mod.Name = name;
-                        registeredMods.Add(mod);
+                        mods.Add(mod);
                     }
             }
 
-            mods = registeredMods;
+            LoadLoadables();
         }
 
         private static void LoadLoadables()
         {
+            events = new List<Event>();
+
+            if (mods is null)
+                throw new Exception();
+
             foreach (Mod mod in mods)
             {
                 mod.Load();
@@ -68,6 +77,18 @@ namespace Terraria.NTerraria.API
                     }
                 }
             }
+        }
+
+        public static void UpdateEvents()
+        {
+            foreach (Event @event in events)
+                if (@event.ShouldUpdate())
+                {
+                    @event.Update();
+                    @event.IsRunning = true;
+                }
+                else
+                    @event.IsRunning = false;
         }
     }
 }
