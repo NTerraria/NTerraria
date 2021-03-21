@@ -1,0 +1,11 @@
+--- src/Terraria/Terraria/WorldBuilding/WorldGenerator.cs
++++ src/NTerraria/Terraria/WorldBuilding/WorldGenerator.cs
+@@ -4,7 +_,7 @@
+ 
+ namespace Terraria.WorldBuilding
+ {
+-	public class WorldGenerator
++	public partial class WorldGenerator
+ 	{
+ 		private readonly List<GenPass> _passes = new List<GenPass>();
+ 		private float _totalLoadWeight;

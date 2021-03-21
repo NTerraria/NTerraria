@@ -1,0 +1,15 @@
+--- src/Terraria/Terraria/IngameOptions.cs
++++ src/NTerraria/Terraria/IngameOptions.cs
+@@ -125,7 +_,11 @@
+ 
+ 			if (isActive)
+ 				maxWidth = 200f;
+-
++			/* TODO: vvv
++			Procs.DrawOptionsMenu();
++			if (Procs.ModOptions)
++			    return;
++			 */
+ 			new Vector2(Main.mouseX, Main.mouseY);
+ 			bool flag4 = Main.mouseLeft && Main.mouseLeftRelease;
+ 			Vector2 value = new Vector2(Main.screenWidth, Main.screenHeight);

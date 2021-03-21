@@ -1,0 +1,36 @@
+--- src/Terraria/Terraria/GameContent/UI/Elements/UICharacter.cs
++++ src/NTerraria/Terraria/GameContent/UI/Elements/UICharacter.cs
+@@ -54,8 +_,10 @@
+ 
+ 		protected override void DrawSelf(SpriteBatch spriteBatch) {
+ 			CalculatedStyle dimensions = GetDimensions();
+-			if (_drawsBackPanel)
++			if (_drawsBackPanel && true) // TODO: Procs.WorldGameMode == GameMode.Action
+ 				spriteBatch.Draw(_texture.Value, dimensions.Position(), Color.White);
++			// else if (_drawsBackPanel)
++			// TODO: spriteBatch.Draw(Procs.ClassIcons, new Rectangle((int)dimensions.X, (int)dimensions.Y, 58, 59), _player.GetStatusMode.PlayerClasses.CurrentClass.DrawRankRect, Color.White);
+ 
+ 			UpdateAnim();
+ 			Vector2 value = dimensions.Position() + new Vector2(dimensions.Width * 0.5f - (float)(_player.width >> 1), dimensions.Height * 0.5f - (float)(_player.height >> 1));
+@@ -63,10 +_,20 @@
+ 			_player.inventory[_player.selectedItem] = _blankItem;
+ 			Main.PlayerRenderer.DrawPlayer(Main.Camera, _player, value + Main.screenPosition, 0f, Vector2.Zero, 0f, _characterScale);
+ 			_player.inventory[_player.selectedItem] = item;
+-		}
++
++            DrawPlayerLevel(spriteBatch, dimensions);
++        }
+ 
+ 		public void SetAnimated(bool animated) {
+ 			_animated = animated;
++		}
++
++		private void DrawPlayerLevel(SpriteBatch spriteBatch, CalculatedStyle dimensions)
++        {
++			/* TODO: This vvv
++            string playerLevel = _player.GetStatusMode.Level.ToString();
++            float posX = dimensions.X + (58f - Main.fontMouseText.MeasureString(CharLevel).X);
++            Utils.DrawBorderStringFourWay(spriteBatch, Main.fontMouseText, CharLevel, posX, dimensions.Y + 59f - 22f, _player.GetStatusMode.LevelAsColor, Color.Black, Vector2.Zero);*/
+ 		}
+ 	}
+ }

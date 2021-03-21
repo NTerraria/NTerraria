@@ -1,0 +1,100 @@
+--- src/Terraria/Terraria/GameContent/UI/Elements/UICharacterListItem.cs
++++ src/NTerraria/Terraria/GameContent/UI/Elements/UICharacterListItem.cs
+@@ -85,9 +_,10 @@
+ 			uIImageButton4.OnMouseOut += DeleteMouseOut;
+ 			_deleteButton = uIImageButton4;
+ 			Append(uIImageButton4);
++            AppendNPPUI();
+ 			_buttonLabel = new UIText("");
+ 			_buttonLabel.VAlign = 1f;
+-			_buttonLabel.Left.Set(80f, 0f);
++			_buttonLabel.Left.Set(108f, 0f);
+ 			_buttonLabel.Top.Set(-3f, 0f);
+ 			Append(_buttonLabel);
+ 			_deleteButtonLabel = new UIText("");
+@@ -116,6 +_,11 @@
+ 		}
+ 
+ 		private void PlayMouseOver(UIMouseEvent evt, UIElement listeningElement) {
++			/* TODO: vvv
++			 *  if (Procs.NPPPick.Exists(p => p.Player.name == data.Player.name))
++			 *		_buttonLabel.SetText(Language.GetTextureValue("NTerraria.UI_NPPlayer"); // "Cannot use when selected as NPPlayer"
++			 *	else // regular code
++			 */
+ 			_buttonLabel.SetText(Language.GetTextValue("UI.Play"));
+ 		}
+ 
+@@ -167,7 +_,7 @@
+ 		}
+ 
+ 		private void PlayGame(UIMouseEvent evt, UIElement listeningElement) {
+-			if (listeningElement == evt.Target && _data.Player.loadStatus == 0)
++			if (listeningElement == evt.Target && _data.Player.loadStatus == 0 && true) // TODO: !Procs.NPPPick.Exists(p => p.Player.name == data.Player.name)
+ 				Main.SelectPlayer(_data);
+ 		}
+ 
+@@ -282,5 +_,64 @@
+ 			vector4 += new Vector2(num4 * 0.5f - FontAssets.MouseText.Value.MeasureString(text2).X * 0.5f, 3f);
+ 			Utils.DrawBorderString(spriteBatch, text2, vector4, Color.White);
+ 		}
++
++        private void AppendNPPUI()
++        {
++			/* TODO: vvv
++            bool shouldShowNPPButton = Procs.CanPickNPP;
++            bool isNPPButtonPressed = shouldShowNPPButton && Procs.NPPPick.Exists((PlayerFileData p) => p.Player.name == data.Player.name);
++
++            if (!shouldShowNPPButton)
++                return;
++
++            UIImageButton NPPButton = new UIImageButton(isNPPButtonPressed ? Procs.NPPButton[0] : Procs.NPPButton[1]) 
++            { 
++                VAlign = 1f
++            };
++
++            NPPButton.Left.Set(80f, 0f);
++            NPPButton.OnClick += NPP_Click;
++
++            NPPButton.OnMouseOver += NPP_MouseOver;
++
++            NPPButton.OnMouseOut += (a, b) => _deleteButtonLabel.SetText("");
++            Append(NPPButton);*/
++        }
++
++        private void NPP_MouseOver(UIMouseEvent evt, UIElement listeningElement) 
++        {
++			/* TODO: vvv
++            if (Procs.NPPPick.Exists(
++                (PlayerFileData p) => p.Player.name == data.Player.name))
++                uICharacterListItem._deleteButtonLabel.SetText(
++                    "Remove from NPPlayers list");
++            else if (Procs.NPPPick.Count >= Procs.MaxNPPlayers)
++                uICharacterListItem._deleteButtonLabel.SetText(
++                    "Cannot add more NPPlayers");
++            else
++                uICharacterListItem._deleteButtonLabel
++                    .SetText("Add to NPPlayers list");*/
++		}
++
++        private void NPP_Click(UIMouseEvent evt, UIElement listeningElement)
++        {
++			/* TODO: vvv
++            bool flag = Procs.NPPPick.Exists((PlayerFileData p) => p.Player.name == data.Player.name);
++
++            if (flag)
++            {
++                flag = false;
++                Procs.NPPPick.Remove(data);
++            }
++            else if (Procs.NPPPick.Count < Procs.MaxNPPlayers)
++            {
++                Procs.NPPPick.Add(data);
++                flag = true;
++            }
++
++            ((UIImageButton)ev.Target).SetImage(flag
++                ? Procs.NPPButton[0]
++                : Procs.NPPButton[1]);*/
++        }
+ 	}
+ }

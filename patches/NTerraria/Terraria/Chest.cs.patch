@@ -1,0 +1,23 @@
+--- src/Terraria/Terraria/Chest.cs
++++ src/NTerraria/Terraria/Chest.cs
+@@ -913,6 +_,11 @@
+ 						num++;
+ 						array[num].SetDefaults(965);
+ 						num++;
++                        if (NPC.downedBoss1)
++                        {
++							array[num].SetDefaults(ItemID.Bottle);
++                            num++;
++                        }
+ 						if (Main.player[Main.myPlayer].ZoneSnow) {
+ 							array[num].SetDefaults(967);
+ 							num++;
+@@ -2552,7 +_,7 @@
+ 				if (Main.player[Main.myPlayer].ZoneGlowshroom && num < 39)
+ 					array[num++].SetDefaults(4921);
+ 			}
+-
++			// TODO: Procs.ShopSetupMod(type, num, ref item);
+ 			for (int num12 = 0; num12 < num; num12++) {
+ 				array[num12].isAShopItem = true;
+ 			}

@@ -1,0 +1,11 @@
+--- src/Terraria/Terraria/Initializers/PlayerDataInitializer.cs
++++ src/NTerraria/Terraria/Initializers/PlayerDataInitializer.cs
+@@ -21,7 +_,7 @@
+ 			LoadDisplayDollMale();
+ 			LoadDisplayDollFemale();
+ 		}
+-
++		// TODO: Determine if we need to replace these with N Terraria textures *shrug*
+ 		private static void LoadVariant(int ID, int[] pieceIDs) {
+ 			for (int i = 0; i < pieceIDs.Length; i++) {
+ 				TextureAssets.Players[ID, pieceIDs[i]] = Main.Assets.Request<Texture2D>("Images/Player_" + ID + "_" + pieceIDs[i], AssetRequestMode.AsyncLoad);

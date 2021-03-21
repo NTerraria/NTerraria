@@ -1,0 +1,67 @@
+--- src/Terraria/Terraria/UI/ItemSlot.cs
++++ src/NTerraria/Terraria/UI/ItemSlot.cs
+@@ -878,8 +_,23 @@
+ 					result = 2;
+ 					break;
+ 				case 15:
+-					if (checkItem.type == 0 && inv[slot].type > 0)
+-						result = 3;
++                    if (checkItem.type == 0 && inv[slot].type > 0)
++                    {
++						/* TODO: vvv
++						 *	int Price = (int)((double)inv[slot].value * ((double)Procs.Taxes[Main.npcShop] * 0.01));
++        				 *	if (inv[slot].buy)
++		        		 *	{
++				         *		Price *= 2;
++        				 *		Price -= (int)((double)Price * player.Discount);
++	        			 *	}
++	        			 *	else
++	        			 *	{
++	        			 *		Price += (int)((double)Price * player.Overcharge);
++	        			 *	}
++	        			 *	if (player.BuyItem(Price))
++						 *		result = 3;
++						 */
++					}
+ 					else if (checkItem.type == inv[slot].type && checkItem.type > 0 && checkItem.stack < checkItem.maxStack && inv[slot].stack > 0)
+ 						result = 3;
+ 					else if (inv[slot].type == 0 && checkItem.type > 0 && (checkItem.type < 71 || checkItem.type > 74))
+@@ -1000,7 +_,24 @@
+ 			switch (context) {
+ 				case 0:
+ 					result = true;
++                    if (Main.mouseRight && inv[slot].type == 9081)
++                    {
++                        /* TODO: vvv
++                        if (Main.mouseRightRelease)
++                        {
++                            player.OpenRaccoonBox();
++                            inv[slot].stack--;
++                            if (inv[slot].stack == 0)
++                            {
++                                inv[slot].SetDefaults();
++                            }
++                            Main.PlaySound(7);
++                            Main.stackSplit = 30;
++                            Main.mouseRightRelease = false;
++                            Recipe.FindRecipes();
++                        }*/
++                    }
+-					if (Main.mouseRight && ((inv[slot].type >= 3318 && inv[slot].type <= 3332) || inv[slot].type == 3860 || inv[slot].type == 3862 || inv[slot].type == 3861 || inv[slot].type == 4782 || inv[slot].type == 4957)) {
++					else if (Main.mouseRight && ((inv[slot].type >= 3318 && inv[slot].type <= 3332) || inv[slot].type == 3860 || inv[slot].type == 3862 || inv[slot].type == 3861 || inv[slot].type == 4782 || inv[slot].type == 4957)) {
+ 						if (Main.mouseRightRelease) {
+ 							player.OpenBossBag(inv[slot].type);
+ 							inv[slot].stack--;
+@@ -1749,6 +_,12 @@
+ 			if (inv[slot].type > 0 && inv[slot].stack > 0) {
+ 				_customCurrencyForSavings = inv[slot].shopSpecialCurrency;
+ 				Main.hoverItemName = inv[slot].Name;
++				/* TODO: vvv
++				 if (inv[slot].RefineLevel > 0)
++				{
++					Main.hoverItemName = Main.hoverItemName + "+" + inv[slot].RefineLevel;
++				}
++				 */
+ 				if (inv[slot].stack > 1)
+ 					Main.hoverItemName = Main.hoverItemName + " (" + inv[slot].stack + ")";
+ 

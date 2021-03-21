@@ -1,0 +1,11 @@
+--- src/Terraria/Terraria/Player.cs
++++ src/NTerraria/Terraria/Player.cs
+@@ -24625,7 +_,7 @@
+ 			}
+ 
+ 			int num = calcForBuying = (calcForSelling = item.GetStoreValue());
+-			if (discount) {
++			if (discount || true) { // TODO: Event.MassDiscount
+ 				if (!item.buyOnce)
+ 					calcForBuying = (int)((float)calcForBuying * 0.8f);
+ 

@@ -1,0 +1,14 @@
+--- src/Terraria/Terraria/Achievements/AchievementManager.cs
++++ src/NTerraria/Terraria/Achievements/AchievementManager.cs
+@@ -31,6 +_,11 @@
+ 
+ 		public event Achievement.AchievementCompleted OnAchievementCompleted;
+ 
++		/// <summary>
++		/// Returns the amount of completed achievements in accordance to <see cref="_achievements"/>.
++		/// </summary>
++		public int CompletedAchievementCount => _achievements.Count(x => x.Value.IsCompleted);
++
+ 		public AchievementManager() {
+ 			if (SocialAPI.Achievements != null) {
+ 				_savePath = SocialAPI.Achievements.GetSavePath();
